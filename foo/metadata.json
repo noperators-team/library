@@ -1,0 +1,8 @@
+{
+  "namespace": "foo",
+  "icon": "icon.png",
+  "author": {
+    "name": "Noperators Team",
+    "homepage": "https://noperators.com"
+  }
+}

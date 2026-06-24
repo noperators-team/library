@@ -1,0 +1,15 @@
+{
+  "name": "@noperators/library",
+  "version": "1.0.0",
+  "description": "Noperators public library of flows and snippets",
+  "private": true,
+  "scripts": {
+    "validate": "node scaffold.js validate",
+    "new:service": "node scaffold.js new service",
+    "new:flow": "node scaffold.js new flow",
+    "new:snippet": "node scaffold.js new snippet"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

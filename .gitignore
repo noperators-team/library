@@ -1,0 +1,5 @@
+*.log
+*.key
+.idea
+node_modules
+.env
