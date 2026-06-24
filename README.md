@@ -7,17 +7,18 @@ Public library of Noperators flows and snippets, consumed by the in-app store vi
 ```
 library/
 ├── scaffold.js
-└── [service]/
-    ├── metadata.json     # namespace, icon, author
-    ├── icon.png          # 128×128 px
-    ├── flows/
-    │   └── [reference].js
-    └── snippets/
-        └── [reference].js
+└── blueprints/
+    └── [service]/
+        ├── metadata.json     # namespace, icon, author
+        ├── icon.png          # 128×128 px
+        ├── flows/
+        │   └── [reference].js
+        └── snippets/
+            └── [reference].js
 ```
 
-- **Service**: service or domain name (`salesforce`, `gmail`, `linkedin`…)
-- **Reference**: filename without `.js` — unique identifier of the flow/snippet within the service
+- **Service**: service or domain name (`salesforce`, `gmail`, `linkedin`...)
+- **Reference**: filename without `.js`, valid JS identifier (e.g. `scrapeProfile`)
 - **Label**: first comment line of the file (`// My flow`)
 
 ## metadata.json

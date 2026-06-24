@@ -5,8 +5,8 @@ const fs   = require('fs');
 const path = require('path');
 
 const ROOT        = __dirname;
+const BLUEPRINTS  = path.join(ROOT, 'blueprints');
 const ITEM_DIRS   = ['flows', 'snippets'];
-const NON_SERVICE = new Set(['scaffold.js', 'README.md', 'package.json']);
 
 const c = {
   green:  s => `\x1b[32m${s}\x1b[0m`,
@@ -101,7 +101,7 @@ function jsFiles(dir) {
 // ─── Validate ────────────────────────────────────────────────────────────────
 
 function validateService(name) {
-  const dir      = path.join(ROOT, name);
+  const dir      = path.join(BLUEPRINTS, name);
   const errors   = [];
   const warnings = [];
 
@@ -152,11 +152,11 @@ function validateService(name) {
 }
 
 function runValidate() {
-  const services = fs.readdirSync(ROOT)
-    .filter(f => !NON_SERVICE.has(f) && isDir(path.join(ROOT, f)));
+  const services = fs.readdirSync(BLUEPRINTS)
+    .filter(f => isDir(path.join(BLUEPRINTS, f)));
 
   if (services.length === 0) {
-    console.log('No services found in library/.');
+    console.log('No blueprints found in library/blueprints/.');
     process.exit(0);
   }
 
@@ -167,7 +167,7 @@ function runValidate() {
 
     if (errors.length === 0 && warnings.length === 0) {
       const counts = ITEM_DIRS.map(sub => {
-        const n = jsFiles(path.join(ROOT, name, sub)).length;
+        const n = jsFiles(path.join(BLUEPRINTS, name, sub)).length;
         return n ? `${n} ${sub.slice(0, -1)}${n > 1 ? 's' : ''}` : null;
       }).filter(Boolean).join(', ');
       console.log(`${c.green('✓')}  ${name}  ${c.dim(`(${counts || 'empty'})`)}`);
@@ -194,7 +194,7 @@ function kebab(name) { return SLUG_RE.test(name); }
 function newService(name) {
   if (!name)         { console.error('Usage: node scaffold.js new service <name>'); process.exit(1); }
   if (!kebab(name))  { console.error('Name must be kebab-case.'); process.exit(1); }
-  const dir = path.join(ROOT, name);
+  const dir = path.join(BLUEPRINTS, name);
   if (fs.existsSync(dir)) { console.error(`"${name}" already exists.`); process.exit(1); }
 
   fs.mkdirSync(path.join(dir, 'flows'),    { recursive: true });
@@ -215,10 +215,10 @@ function newItem(type, service, reference) {
   if (!JS_IDENT.test(reference)) { console.error('Reference must be a valid JS identifier (no hyphens or spaces, e.g. "myFlow").'); process.exit(1); }
 
   const sub  = type === 'flow' ? 'flows' : 'snippets';
-  const dir  = path.join(ROOT, service, sub);
+  const dir  = path.join(BLUEPRINTS, service, sub);
   const file = path.join(dir, `${reference}.js`);
 
-  if (!isDir(path.join(ROOT, service))) {
+  if (!isDir(path.join(BLUEPRINTS, service))) {
     console.error(`Service "${service}" not found. Create it first: npm run new:service ${service}`);
     process.exit(1);
   }
