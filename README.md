@@ -18,16 +18,18 @@ library/
 ```
 
 - **Service**: service or domain name (`salesforce`, `gmail`, `linkedin`...)
+- **Namespace**: variable-style identifier, lowercase letters, digits, and underscores. It must not start with a digit.
 - **Reference**: filename without `.js`, valid JS identifier (e.g. `scrapeProfile`)
-- **Label**: first comment line of the file (`// My flow`)
+- **Title**: `// @title` header in each flow/snippet file
+- **Description**: `// @description` header in each flow/snippet file
 
 ## metadata.json
 
 ```json
 {
   "title": "My Service",
-  "namespace": "my-service",
-  "description": "Optional short description shown in the store",
+  "namespace": "my_service",
+  "description": "Short description shown in the store",
   "category": "scraping",
   "icon": "icon.png",
   "author": {
@@ -37,14 +39,15 @@ library/
 }
 ```
 
-`description` and `author` are optional. `category` must be one of: `auth`, `scraping`, `files`, `notifications`, `data`.
+`author` is optional. `title`, `namespace`, `description`, `category`, and `icon` are required. `namespace` must match `^[a-z_][a-z0-9_]*$`. `category` must be one of: `auth`, `scraping`, `files`, `notifications`, `data`.
 
-## Label convention
+## Item headers
 
-The **first line** of every `.js` file must be a comment — it becomes the label shown in the store:
+Every `.js` file must start with `@title` and include `@description` before the code:
 
 ```js
-// Scrape the LinkedIn profile data
+// @title Scrape LinkedIn profile data
+// @description Extracts public profile details from a LinkedIn page.
 async function run($page, $input) { ... }
 ```
 

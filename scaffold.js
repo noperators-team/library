@@ -17,22 +17,23 @@ const c = {
 
 // ─── Schema ──────────────────────────────────────────────────────────────────
 
-const SLUG_RE    = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+const NAMESPACE_RE = /^[a-z_][a-z0-9_]*$/;
 const JS_IDENT   = /^[a-zA-Z_$][a-zA-Z0-9_$]*$/;
 const CATEGORIES = ['auth', 'scraping', 'files', 'notifications', 'data'];
 
 const s = {
   string: (opts = {}) => ({ _type: 'string', _optional: !!opts.optional }),
-  slug:   (opts = {}) => ({ _type: 'slug',   _optional: !!opts.optional }),
+  namespace: (opts = {}) => ({ _type: 'namespace', _optional: !!opts.optional }),
   enum:   (values, opts = {}) => ({ _type: 'enum', _values: values, _optional: !!opts.optional }),
   object: (props, opts = {}) => ({ _type: 'object', _props: props, _optional: !!opts.optional }),
 };
 
 const METADATA_SCHEMA = s.object({
-  title:     s.string(),
-  namespace: s.slug(),
-  category:  s.enum(CATEGORIES),
-  icon:      s.string(),
+  title:       s.string(),
+  namespace:   s.namespace(),
+  description: s.string(),
+  category:    s.enum(CATEGORIES),
+  icon:        s.string(),
   author: s.object({
     name:     s.string(),
     homepage: s.string({ optional: true }),
@@ -53,10 +54,10 @@ function checkSchema(value, schema, base = '') {
     if (rule._type === 'string') {
       if (typeof val !== 'string') errors.push(`"${loc}" must be a string (got: ${typeof val})`);
       else if (!val.trim())        errors.push(`"${loc}" must not be empty`);
-    } else if (rule._type === 'slug') {
+    } else if (rule._type === 'namespace') {
       if (typeof val !== 'string')   errors.push(`"${loc}" must be a string (got: ${typeof val})`);
       else if (!val.trim())          errors.push(`"${loc}" must not be empty`);
-      else if (!SLUG_RE.test(val))   errors.push(`"${loc}" must be a kebab-case slug (lowercase, digits, hyphens only, e.g. "my-service") got: "${val}"`);
+      else if (!NAMESPACE_RE.test(val)) errors.push(`"${loc}" must be a variable-style namespace (lowercase letters, digits, underscores, and must not start with a digit, e.g. "my_service") got: "${val}"`);
     } else if (rule._type === 'enum') {
       if (typeof val !== 'string')        errors.push(`"${loc}" must be a string (got: ${typeof val})`);
       else if (!rule._values.includes(val)) errors.push(`"${loc}" must be one of: ${rule._values.join(', ')} (got: "${val}")`);
@@ -70,12 +71,21 @@ function checkSchema(value, schema, base = '') {
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
-function firstComment(filePath) {
-  const first = fs.readFileSync(filePath, 'utf8').split('\n')[0].trim();
-  if (!first.startsWith('//')) return null;
-  const label = first.slice(2).trim();
-  if (!label || label.toUpperCase().startsWith('TODO')) return null;
-  return label;
+function codeHeader(filePath) {
+  const lines = fs.readFileSync(filePath, 'utf8').split('\n');
+  const first = lines.find(line => line.trim() !== '')?.trim() ?? '';
+  const tags = {};
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (trimmed === '') continue;
+    if (!trimmed.startsWith('//')) break;
+
+    const match = trimmed.match(/^\/\/\s*@([a-z]+)\s+(.+)$/i);
+    if (match) tags[match[1].toLowerCase()] = match[2].trim();
+  }
+
+  return { first, tags };
 }
 
 const PNG_SIG       = [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a];
@@ -145,9 +155,13 @@ function validateService(name) {
       if (!JS_IDENT.test(ref))
         errors.push(`${sub}/${file}: filename must be a valid JS identifier (no hyphens or spaces, e.g. "myFlow")`);
 
-      const label = firstComment(path.join(subDir, file));
-      if (!label)
-        errors.push(`${sub}/${file}: first line must be a non-empty comment (// label of the flow/snippet)`);
+      const header = codeHeader(path.join(subDir, file));
+      if (!header.first.startsWith('// @title '))
+        errors.push(`${sub}/${file}: first non-empty line must be "// @title <title>"`);
+      if (!header.tags.title || header.tags.title.toUpperCase().startsWith('TODO'))
+        errors.push(`${sub}/${file}: missing non-empty "// @title <title>" header`);
+      if (!header.tags.description || header.tags.description.toUpperCase().startsWith('TODO'))
+        errors.push(`${sub}/${file}: missing non-empty "// @description <description>" header`);
     }
   }
 
@@ -196,18 +210,18 @@ function runValidate() {
 
 // ─── Scaffold ────────────────────────────────────────────────────────────────
 
-function kebab(name) { return SLUG_RE.test(name); }
+function validNamespace(name) { return NAMESPACE_RE.test(name); }
 
 function newService(name) {
   if (!name)         { console.error('Usage: node scaffold.js new service <name>'); process.exit(1); }
-  if (!kebab(name))  { console.error('Name must be kebab-case.'); process.exit(1); }
+  if (!validNamespace(name))  { console.error('Name must use lowercase letters, digits, and underscores, and must not start with a digit.'); process.exit(1); }
   const dir = path.join(BLUEPRINTS, name);
   if (fs.existsSync(dir)) { console.error(`"${name}" already exists.`); process.exit(1); }
 
   fs.mkdirSync(path.join(dir, 'flows'),    { recursive: true });
   fs.mkdirSync(path.join(dir, 'snippets'), { recursive: true });
   fs.writeFileSync(path.join(dir, 'metadata.json'),
-    JSON.stringify({ title: name, namespace: name, category: CATEGORIES[0], icon: 'icon.png' }, null, 2) + '\n');
+    JSON.stringify({ title: name, namespace: name, description: `Describe what ${name} provides.`, category: CATEGORIES[0], icon: 'icon.png' }, null, 2) + '\n');
 
   console.log(`${c.green('✓')}  blueprints/${name}/ created`);
   console.log(c.dim(`   → Set "category" to one of: ${CATEGORIES.join(', ')}`));
@@ -234,12 +248,12 @@ function newItem(type, service, reference) {
   if (fs.existsSync(file)) { console.error(`"${reference}.js" already exists in ${service}/${sub}/`); process.exit(1); }
 
   const template = type === 'flow'
-    ? `// TODO: describe what this flow does\nasync function run($page, $input) {\n  // ...\n  return $generateResponseSuccess('Done', {});\n}\n`
-    : `// TODO: describe what this snippet does\nreturn {\n  // ...\n};\n`;
+    ? `// @title TODO: title of this flow\n// @description TODO: describe what this flow does\nasync function run($page, $input) {\n  // ...\n  return $generateResponseSuccess('Done', {});\n}\n`
+    : `// @title TODO: title of this snippet\n// @description TODO: describe what this snippet does\nreturn {\n  // ...\n};\n`;
 
   fs.writeFileSync(file, template);
   console.log(`${c.green('✓')}  ${service}/${sub}/${reference}.js created`);
-  console.log(c.dim('   → Replace the TODO comment with a real description (it becomes the label)'));
+  console.log(c.dim('   → Replace @title and @description with real store copy'));
 }
 
 // ─── CLI ─────────────────────────────────────────────────────────────────────
