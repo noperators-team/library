@@ -3,6 +3,7 @@
   "namespace": "example_blueprint",
   "description": "This is an example blueprint ",
   "category": "scraping",
+  "color": "green",
   "icon": "icon.png",
   "author": {
     "name": "Noperators Team",

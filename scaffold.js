@@ -20,6 +20,7 @@ const c = {
 const NAMESPACE_RE = /^[a-z_][a-z0-9_]*$/;
 const JS_IDENT   = /^[a-zA-Z_$][a-zA-Z0-9_$]*$/;
 const CATEGORIES = ['auth', 'scraping', 'files', 'notifications', 'data'];
+const COLORS     = ['green', 'blue', 'cyan', 'purple', 'pink', 'orange', 'amber', 'slate'];
 
 const s = {
   string: (opts = {}) => ({ _type: 'string', _optional: !!opts.optional }),
@@ -33,6 +34,7 @@ const METADATA_SCHEMA = s.object({
   namespace:   s.namespace(),
   description: s.string(),
   category:    s.enum(CATEGORIES),
+  color:       s.enum(COLORS, { optional: true }),
   icon:        s.string(),
   author: s.object({
     name:     s.string(),
@@ -221,10 +223,11 @@ function newService(name) {
   fs.mkdirSync(path.join(dir, 'flows'),    { recursive: true });
   fs.mkdirSync(path.join(dir, 'snippets'), { recursive: true });
   fs.writeFileSync(path.join(dir, 'metadata.json'),
-    JSON.stringify({ title: name, namespace: name, description: `Describe what ${name} provides.`, category: CATEGORIES[0], icon: 'icon.png' }, null, 2) + '\n');
+    JSON.stringify({ title: name, namespace: name, description: `Describe what ${name} provides.`, category: CATEGORIES[0], color: COLORS[0], icon: 'icon.png' }, null, 2) + '\n');
 
   console.log(`${c.green('✓')}  blueprints/${name}/ created`);
   console.log(c.dim(`   → Set "category" to one of: ${CATEGORIES.join(', ')}`));
+  console.log(c.dim(`   → Set "color" to one of: ${COLORS.join(', ')}`));
   console.log(c.dim('   → Add icon.png (128x128 px)'));
   console.log(c.dim(`   → npm run new:flow ${name} <reference>`));
 }

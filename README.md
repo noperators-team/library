@@ -31,6 +31,7 @@ library/
   "namespace": "my_service",
   "description": "Short description shown in the store",
   "category": "scraping",
+  "color": "green",
   "icon": "icon.png",
   "author": {
     "name": "Your name",
@@ -39,7 +40,7 @@ library/
 }
 ```
 
-`author` is optional. `title`, `namespace`, `description`, `category`, and `icon` are required. `namespace` must match `^[a-z_][a-z0-9_]*$`. `category` must be one of: `auth`, `scraping`, `files`, `notifications`, `data`.
+`author` and `color` are optional. `title`, `namespace`, `description`, `category`, and `icon` are required. `namespace` must match `^[a-z_][a-z0-9_]*$`. `category` must be one of: `auth`, `scraping`, `files`, `notifications`, `data`. `color` must be one of: `green`, `blue`, `cyan`, `purple`, `pink`, `orange`, `amber`, `slate`.
 
 ## Item headers
 
