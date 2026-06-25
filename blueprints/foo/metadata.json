@@ -1,6 +1,7 @@
 {
-  "title": "Foo",
-  "namespace": "foo",
+  "title": "Example Blueprint",
+  "namespace": "example-blueprint",
+  "description": "This is an example blueprint",
   "category": "scraping",
   "icon": "icon.png",
   "author": {
