@@ -1,12 +1,12 @@
 {
-  "title": "Recruiting Pipeline",
+  "title": "Recruiting Pipeline Research And Candidate Shortlist",
   "namespace": "demo_recruiting",
-  "description": "Review candidate pages and build shortlist summaries.",
+  "description": "Review candidate profiles, extract relevant experience, compare role fit, and build recruiter-friendly shortlist summaries.",
   "category": "files",
   "color": "amber",
   "icon": "icon.png",
   "author": {
-    "name": "Demo Studio",
+    "name": "Automation Lab",
     "homepage": "https://noperators.com"
   }
 }

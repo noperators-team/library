@@ -1,12 +1,12 @@
 {
-  "title": "Shopify Ops",
+  "title": "Shopify Catalog And Order Operations",
   "namespace": "demo_shopify",
-  "description": "Automate product checks, order lookups, and stock reports.",
+  "description": "Audit product pages, verify stock availability, inspect recent orders, and prepare operational notes for merchants with multi-region storefronts.",
   "category": "notifications",
   "color": "purple",
   "icon": "icon.png",
   "author": {
-    "name": "Noperators Team",
+    "name": "Blueprint Guild",
     "homepage": "https://example.com"
   }
 }

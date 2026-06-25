@@ -1,12 +1,12 @@
 {
-  "title": "Stripe Monitor",
+  "title": "Stripe Billing Monitoring And Customer Snapshot",
   "namespace": "demo_stripe",
-  "description": "Inspect customer payments and produce billing snapshots.",
+  "description": "Inspect subscriptions, failed invoices, payment activity, and customer metadata to produce a billing snapshot that support teams can understand quickly.",
   "category": "files",
   "color": "slate",
   "icon": "icon.png",
   "author": {
-    "name": "Demo Studio",
+    "name": "Automation Lab",
     "homepage": "https://example.com"
   }
 }

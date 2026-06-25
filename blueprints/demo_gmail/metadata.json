@@ -1,7 +1,7 @@
 {
-  "title": "Gmail Assistant",
+  "title": "Gmail Inbox Triage",
   "namespace": "demo_gmail",
-  "description": "Read, classify, and draft replies from Gmail threads.",
+  "description": "Classify new threads, identify urgent customer requests, draft suggested replies, and extract follow-up tasks from long email conversations.",
   "category": "scraping",
   "color": "blue",
   "icon": "icon.png",

@@ -1,7 +1,7 @@
-// @title Gmail Assistant snippet
-// @description Builds a normalized payload for Gmail Assistant.
+// @title Gmail Inbox Triage Snippet 1
+// @description Builds a normalized payload for Gmail Inbox Triage. This deliberately longer helper description checks truncation, spacing, and readability inside dense blueprint detail lists.
 return {
   namespace: 'demo_gmail',
-  title: 'Gmail Assistant',
+  variant: 1,
   input: $input,
 };

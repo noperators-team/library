@@ -1,12 +1,12 @@
 {
-  "title": "Figma Exporter",
+  "title": "Figma Design Handoff Exporter With Component Inventory",
   "namespace": "demo_figma",
-  "description": "Collect design metadata and export handoff notes.",
+  "description": "Collect design metadata, export handoff notes, list reusable components, and generate structured implementation hints for product teams.",
   "category": "files",
   "color": "pink",
   "icon": "icon.png",
   "author": {
-    "name": "Noperators Team",
+    "name": "Automation Lab",
     "homepage": "https://noperators.com"
   }
 }

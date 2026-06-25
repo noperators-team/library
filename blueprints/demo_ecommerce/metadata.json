@@ -1,12 +1,12 @@
 {
-  "title": "Ecommerce QA",
+  "title": "Ecommerce Quality Assurance And Checkout Availability Monitor",
   "namespace": "demo_ecommerce",
-  "description": "Check product pages, pricing, and checkout availability.",
+  "description": "Check product pages, verify pricing, test checkout availability, capture broken states, and create QA tickets for storefront teams.",
   "category": "scraping",
   "color": "cyan",
   "icon": "icon.png",
   "author": {
-    "name": "Automation Lab",
+    "name": "Demo Studio",
     "homepage": "https://noperators.com"
   }
 }

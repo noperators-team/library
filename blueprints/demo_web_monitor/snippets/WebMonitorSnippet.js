@@ -1,7 +1,7 @@
-// @title Web Monitor snippet
-// @description Builds a normalized payload for Web Monitor.
+// @title Public Website Change Monitoring With Screenshot Evidence Snippet 1
+// @description Builds a normalized payload for Public Website Change Monitoring With Screenshot Evidence. This deliberately longer helper description checks truncation, spacing, and readability inside dense blueprint detail lists.
 return {
   namespace: 'demo_web_monitor',
-  title: 'Web Monitor',
+  variant: 1,
   input: $input,
 };

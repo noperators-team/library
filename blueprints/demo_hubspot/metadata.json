@@ -1,12 +1,12 @@
 {
-  "title": "HubSpot Enrichment",
+  "title": "HubSpot CRM Data Enrichment Suite",
   "namespace": "demo_hubspot",
-  "description": "Enrich CRM contacts with public website and company data.",
+  "description": "Enrich contacts and companies using public web sources, normalize lifecycle fields, and create a preview of proposed CRM updates.",
   "category": "scraping",
   "color": "amber",
   "icon": "icon.png",
   "author": {
-    "name": "Noperators Team",
+    "name": "Demo Studio",
     "homepage": "https://noperators.com"
   }
 }

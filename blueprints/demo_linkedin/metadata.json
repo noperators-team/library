@@ -1,7 +1,7 @@
 {
-  "title": "LinkedIn Scout",
+  "title": "LinkedIn Sales Prospect Research With Long Company Context",
   "namespace": "demo_linkedin",
-  "description": "Collect public profile data and prepare lead summaries.",
+  "description": "Collect public profile details, company snippets, recent activity, and role signals to prepare a richer lead summary for outbound sales workflows.",
   "category": "files",
   "color": "cyan",
   "icon": "icon.png",

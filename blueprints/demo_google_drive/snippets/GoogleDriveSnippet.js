@@ -1,7 +1,7 @@
-// @title Google Drive Filing snippet
-// @description Builds a normalized payload for Google Drive Filing.
+// @title Google Drive File Discovery And Cleanup Assistant Snippet 1
+// @description Builds a normalized payload for Google Drive File Discovery And Cleanup Assistant. This deliberately longer helper description checks truncation, spacing, and readability inside dense blueprint detail lists.
 return {
   namespace: 'demo_google_drive',
-  title: 'Google Drive Filing',
+  variant: 1,
   input: $input,
 };

@@ -1,12 +1,12 @@
 {
-  "title": "Notion Publisher",
+  "title": "Notion Knowledge Base Publisher",
   "namespace": "demo_notion",
-  "description": "Create Notion pages from structured automation outputs.",
+  "description": "Transform structured automation output into Notion pages with nested blocks, backlinks, tags, and publication-ready summaries for internal teams.",
   "category": "data",
   "color": "pink",
   "icon": "icon.png",
   "author": {
-    "name": "Demo Studio",
+    "name": "Ops Collective",
     "homepage": "https://noperators.com"
   }
 }

@@ -1,7 +1,7 @@
-// @title Slack Digest snippet
-// @description Builds a normalized payload for Slack Digest.
+// @title Slack Incident Digest And Notification Pack Snippet 1
+// @description Builds a normalized payload for Slack Incident Digest And Notification Pack. This deliberately longer helper description checks truncation, spacing, and readability inside dense blueprint detail lists.
 return {
   namespace: 'demo_slack',
-  title: 'Slack Digest',
+  variant: 1,
   input: $input,
 };

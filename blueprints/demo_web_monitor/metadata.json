@@ -1,12 +1,12 @@
 {
-  "title": "Web Monitor",
+  "title": "Public Website Change Monitoring With Screenshot Evidence",
   "namespace": "demo_web_monitor",
-  "description": "Watch public web pages and detect content changes.",
+  "description": "Watch public web pages, detect meaningful content changes, capture screenshot evidence, and send summarized change reports.",
   "category": "data",
   "color": "purple",
   "icon": "icon.png",
   "author": {
-    "name": "Demo Studio",
+    "name": "Ops Collective",
     "homepage": "https://example.com"
   }
 }

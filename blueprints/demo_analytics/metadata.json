@@ -1,12 +1,12 @@
 {
-  "title": "Analytics Export",
+  "title": "Analytics Export And Narrative Insight Generator",
   "namespace": "demo_analytics",
-  "description": "Export dashboard figures and create plain language summaries.",
+  "description": "Export dashboard figures, detect trends, explain changes in plain language, and prepare narrative insights for weekly business reviews.",
   "category": "files",
   "color": "purple",
   "icon": "icon.png",
   "author": {
-    "name": "Noperators Team",
+    "name": "Automation Lab",
     "homepage": "https://example.com"
   }
 }

@@ -1,12 +1,12 @@
 {
-  "title": "HR Onboarding",
+  "title": "HR Onboarding Checklist And Employee Setup Automation",
   "namespace": "demo_hr",
-  "description": "Prepare onboarding tasks and employee checklist updates.",
+  "description": "Prepare onboarding tasks, collect employee details, generate checklist updates, and notify stakeholders when setup steps are missing.",
   "category": "notifications",
   "color": "pink",
   "icon": "icon.png",
   "author": {
-    "name": "Demo Studio",
+    "name": "Blueprint Guild",
     "homepage": "https://noperators.com"
   }
 }

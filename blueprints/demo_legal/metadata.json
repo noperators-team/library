@@ -1,12 +1,12 @@
 {
-  "title": "Legal Intake",
+  "title": "Legal Intake Entity Extraction And Case Summary",
   "namespace": "demo_legal",
-  "description": "Summarize intake forms and extract key legal entities.",
+  "description": "Summarize intake forms, extract parties and dates, identify missing documents, and generate a structured legal case brief.",
   "category": "data",
   "color": "orange",
   "icon": "icon.png",
   "author": {
-    "name": "Automation Lab",
+    "name": "Ops Collective",
     "homepage": "https://example.com"
   }
 }

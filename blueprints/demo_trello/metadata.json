@@ -1,12 +1,12 @@
 {
-  "title": "Trello Planner",
+  "title": "Trello Board Planning And Card Generation Kit",
   "namespace": "demo_trello",
-  "description": "Create cards and organize project boards automatically.",
+  "description": "Create cards, organize lists, apply labels, and convert planning notes into a structured Trello board for project kickoff.",
   "category": "data",
   "color": "amber",
   "icon": "icon.png",
   "author": {
-    "name": "Automation Lab",
+    "name": "Ops Collective",
     "homepage": "https://noperators.com"
   }
 }

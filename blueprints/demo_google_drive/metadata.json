@@ -1,12 +1,12 @@
 {
-  "title": "Google Drive Filing",
+  "title": "Google Drive File Discovery And Cleanup Assistant",
   "namespace": "demo_google_drive",
-  "description": "Find, organize, and summarize Drive documents.",
+  "description": "Find documents across nested folders, detect stale files, summarize key documents, and generate cleanup recommendations for shared workspaces.",
   "category": "notifications",
   "color": "green",
   "icon": "icon.png",
   "author": {
-    "name": "Automation Lab",
+    "name": "Blueprint Guild",
     "homepage": "https://noperators.com"
   }
 }

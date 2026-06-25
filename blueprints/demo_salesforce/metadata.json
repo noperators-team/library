@@ -1,12 +1,12 @@
 {
-  "title": "Salesforce Cleaner",
+  "title": "Salesforce Account Hygiene And Field Normalization Blueprint",
   "namespace": "demo_salesforce",
-  "description": "Normalize account fields and prepare update payloads.",
+  "description": "Normalize account records, identify inconsistent fields, detect missing values, and prepare a detailed update payload for Salesforce administrators.",
   "category": "auth",
   "color": "cyan",
   "icon": "icon.png",
   "author": {
-    "name": "Demo Studio",
+    "name": "Noperators Team",
     "homepage": "https://noperators.com"
   }
 }

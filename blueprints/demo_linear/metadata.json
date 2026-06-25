@@ -1,7 +1,7 @@
 {
-  "title": "Linear Groomer",
+  "title": "Linear Issue Grooming And Sprint Planning Assistant",
   "namespace": "demo_linear",
-  "description": "Classify issues and prepare sprint planning notes.",
+  "description": "Classify issues, detect duplicates, rewrite vague tickets, and generate sprint planning notes from a backlog of product work.",
   "category": "scraping",
   "color": "green",
   "icon": "icon.png",

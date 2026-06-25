@@ -1,12 +1,12 @@
 {
-  "title": "Intercom Triage",
+  "title": "Intercom Conversation Triage And Reply Drafting",
   "namespace": "demo_intercom",
-  "description": "Classify conversations and suggest support replies.",
+  "description": "Review support conversations, classify intent and priority, identify missing customer context, and draft concise support replies with next actions.",
   "category": "data",
   "color": "blue",
   "icon": "icon.png",
   "author": {
-    "name": "Noperators Team",
+    "name": "Ops Collective",
     "homepage": "https://example.com"
   }
 }

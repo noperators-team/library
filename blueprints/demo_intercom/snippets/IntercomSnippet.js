@@ -1,7 +1,7 @@
-// @title Intercom Triage snippet
-// @description Builds a normalized payload for Intercom Triage.
+// @title Intercom Conversation Triage And Reply Drafting Snippet 1
+// @description Builds a normalized payload for Intercom Conversation Triage And Reply Drafting. This deliberately longer helper description checks truncation, spacing, and readability inside dense blueprint detail lists.
 return {
   namespace: 'demo_intercom',
-  title: 'Intercom Triage',
+  variant: 1,
   input: $input,
 };

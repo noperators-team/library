@@ -1,0 +1,9 @@
+// @title Figma Design Handoff Exporter With Component Inventory Flow 4
+// @description Collect design metadata, export handoff notes, list reusable components, and generate structured implementation hints for product teams. This variant intentionally has a longer description so the store detail view can be tested with wrapping text, multiple rows, and dense content layouts.
+async function run($page, $input) {
+  return $generateResponseSuccess('Figma Design Handoff Exporter With Component Inventory Flow 4 completed', {
+    namespace: 'demo_figma',
+    variant: 4,
+    input: $input,
+  });
+}

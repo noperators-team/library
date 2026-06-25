@@ -1,12 +1,12 @@
 {
-  "title": "Newsletter Builder",
+  "title": "Newsletter Research Builder With Source Collection",
   "namespace": "demo_newsletter",
-  "description": "Gather links and draft newsletter sections.",
+  "description": "Gather links, extract key points, cluster stories by theme, and draft newsletter sections with editorial notes.",
   "category": "auth",
   "color": "blue",
   "icon": "icon.png",
   "author": {
-    "name": "Demo Studio",
+    "name": "Noperators Team",
     "homepage": "https://example.com"
   }
 }

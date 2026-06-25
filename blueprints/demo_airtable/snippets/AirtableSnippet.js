@@ -1,7 +1,7 @@
-// @title Airtable Sync snippet
-// @description Builds a normalized payload for Airtable Sync.
+// @title Airtable Cross-Base Synchronization And Deduplication Toolkit Snippet 1
+// @description Builds a normalized payload for Airtable Cross-Base Synchronization And Deduplication Toolkit. This deliberately longer helper description checks truncation, spacing, and readability inside dense blueprint detail lists.
 return {
   namespace: 'demo_airtable',
-  title: 'Airtable Sync',
+  variant: 1,
   input: $input,
 };

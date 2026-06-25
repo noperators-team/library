@@ -1,12 +1,12 @@
 {
-  "title": "Real Estate Watch",
+  "title": "Real Estate Listing Watch And Property Highlight Extractor",
   "namespace": "demo_real_estate",
-  "description": "Monitor listings and extract property highlights.",
+  "description": "Monitor property listings, extract price changes, summarize amenities, and generate alerts for matching buyer criteria.",
   "category": "notifications",
   "color": "slate",
   "icon": "icon.png",
   "author": {
-    "name": "Automation Lab",
+    "name": "Blueprint Guild",
     "homepage": "https://example.com"
   }
 }

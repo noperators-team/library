@@ -1,7 +1,7 @@
 {
-  "title": "GitHub Reviewer",
+  "title": "GitHub Pull Request Review Summary Pack",
   "namespace": "demo_github",
-  "description": "Collect pull request metadata and summarize changes.",
+  "description": "Collect pull request metadata, summarize changed files, identify risky areas, and prepare concise review notes for engineering teams.",
   "category": "files",
   "color": "blue",
   "icon": "icon.png",

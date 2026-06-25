@@ -1,7 +1,7 @@
-// @title Stripe Monitor snippet
-// @description Builds a normalized payload for Stripe Monitor.
+// @title Stripe Billing Monitoring And Customer Snapshot Snippet 1
+// @description Builds a normalized payload for Stripe Billing Monitoring And Customer Snapshot. This deliberately longer helper description checks truncation, spacing, and readability inside dense blueprint detail lists.
 return {
   namespace: 'demo_stripe',
-  title: 'Stripe Monitor',
+  variant: 1,
   input: $input,
 };

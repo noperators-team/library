@@ -1,12 +1,12 @@
 {
-  "title": "Competitor Tracker",
+  "title": "Competitor Website Intelligence Tracker With Long Market Notes",
   "namespace": "demo_competitor",
-  "description": "Capture competitor pages and produce market notes.",
+  "description": "Capture competitor pages, extract pricing and positioning changes, compare messaging over time, and generate long-form market intelligence notes.",
   "category": "scraping",
   "color": "orange",
   "icon": "icon.png",
   "author": {
-    "name": "Noperators Team",
+    "name": "Demo Studio",
     "homepage": "https://example.com"
   }
 }

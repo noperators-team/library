@@ -1,12 +1,12 @@
 {
-  "title": "Calendar Scheduler",
+  "title": "Calendar Scheduling And Follow-Up Workflow",
   "namespace": "demo_calendar",
-  "description": "Inspect availability and prepare meeting follow ups.",
+  "description": "Inspect availability, propose meeting slots, draft follow-up notes, and create structured scheduling handoffs for operators.",
   "category": "notifications",
   "color": "cyan",
   "icon": "icon.png",
   "author": {
-    "name": "Noperators Team",
+    "name": "Blueprint Guild",
     "homepage": "https://noperators.com"
   }
 }

@@ -1,7 +1,7 @@
 {
-  "title": "Airtable Sync",
+  "title": "Airtable Cross-Base Synchronization And Deduplication Toolkit",
   "namespace": "demo_airtable",
-  "description": "Sync records between Airtable bases and browser workflows.",
+  "description": "Synchronize records between multiple Airtable bases, detect duplicate rows, normalize field formats, and produce a concise change report for operators before any update is applied.",
   "category": "auth",
   "color": "green",
   "icon": "icon.png",

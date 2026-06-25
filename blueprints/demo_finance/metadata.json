@@ -1,12 +1,12 @@
 {
-  "title": "Finance Snapshot",
+  "title": "Finance Dashboard Snapshot And Table Normalization Pack",
   "namespace": "demo_finance",
-  "description": "Collect financial tables and normalize report data.",
+  "description": "Collect financial tables, normalize report data, detect outliers, and create an executive summary from dashboard exports.",
   "category": "data",
   "color": "green",
   "icon": "icon.png",
   "author": {
-    "name": "Noperators Team",
+    "name": "Ops Collective",
     "homepage": "https://noperators.com"
   }
 }

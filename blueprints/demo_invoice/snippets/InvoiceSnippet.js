@@ -1,7 +1,7 @@
-// @title Invoice Extractor snippet
-// @description Builds a normalized payload for Invoice Extractor.
+// @title Invoice Extraction And Vendor Normalization Snippet 1
+// @description Builds a normalized payload for Invoice Extraction And Vendor Normalization. This deliberately longer helper description checks truncation, spacing, and readability inside dense blueprint detail lists.
 return {
   namespace: 'demo_invoice',
-  title: 'Invoice Extractor',
+  variant: 1,
   input: $input,
 };

@@ -1,7 +1,7 @@
-// @title Shopify Ops snippet
-// @description Builds a normalized payload for Shopify Ops.
+// @title Shopify Catalog And Order Operations Snippet 1
+// @description Builds a normalized payload for Shopify Catalog And Order Operations. This deliberately longer helper description checks truncation, spacing, and readability inside dense blueprint detail lists.
 return {
   namespace: 'demo_shopify',
-  title: 'Shopify Ops',
+  variant: 1,
   input: $input,
 };

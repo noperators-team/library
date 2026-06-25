@@ -1,12 +1,12 @@
 {
-  "title": "Dropbox Auditor",
+  "title": "Dropbox Shared Folder Auditor",
   "namespace": "demo_dropbox",
-  "description": "Scan shared folders and generate file inventory reports.",
+  "description": "Scan shared folders, detect large files, identify risky public links, and produce a file inventory report for workspace admins.",
   "category": "notifications",
   "color": "orange",
   "icon": "icon.png",
   "author": {
-    "name": "Demo Studio",
+    "name": "Blueprint Guild",
     "homepage": "https://example.com"
   }
 }
