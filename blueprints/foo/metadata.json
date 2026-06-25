@@ -1,5 +1,7 @@
 {
+  "title": "Foo",
   "namespace": "foo",
+  "category": "scraping",
   "icon": "icon.png",
   "author": {
     "name": "Noperators Team",

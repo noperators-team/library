@@ -9,7 +9,7 @@ library/
 ├── scaffold.js
 └── blueprints/
     └── [service]/
-        ├── metadata.json     # namespace, icon, author
+        ├── metadata.json     # title, namespace, icon, author
         ├── icon.png          # 128×128 px
         ├── flows/
         │   └── [reference].js
@@ -25,7 +25,10 @@ library/
 
 ```json
 {
+  "title": "My Service",
   "namespace": "my-service",
+  "description": "Optional short description shown in the store",
+  "category": "scraping",
   "icon": "icon.png",
   "author": {
     "name": "Your name",
@@ -34,7 +37,7 @@ library/
 }
 ```
 
-`author` is optional.
+`description` and `author` are optional. `category` must be one of: `auth`, `scraping`, `files`, `notifications`, `data`.
 
 ## Label convention
 

@@ -17,17 +17,21 @@ const c = {
 
 // ─── Schema ──────────────────────────────────────────────────────────────────
 
-const SLUG_RE   = /^[a-z0-9]+(-[a-z0-9]+)*$/;
-const JS_IDENT  = /^[a-zA-Z_$][a-zA-Z0-9_$]*$/;
+const SLUG_RE    = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+const JS_IDENT   = /^[a-zA-Z_$][a-zA-Z0-9_$]*$/;
+const CATEGORIES = ['auth', 'scraping', 'files', 'notifications', 'data'];
 
 const s = {
   string: (opts = {}) => ({ _type: 'string', _optional: !!opts.optional }),
   slug:   (opts = {}) => ({ _type: 'slug',   _optional: !!opts.optional }),
+  enum:   (values, opts = {}) => ({ _type: 'enum', _values: values, _optional: !!opts.optional }),
   object: (props, opts = {}) => ({ _type: 'object', _props: props, _optional: !!opts.optional }),
 };
 
 const METADATA_SCHEMA = s.object({
+  title:     s.string(),
   namespace: s.slug(),
+  category:  s.enum(CATEGORIES),
   icon:      s.string(),
   author: s.object({
     name:     s.string(),
@@ -53,6 +57,9 @@ function checkSchema(value, schema, base = '') {
       if (typeof val !== 'string')   errors.push(`"${loc}" must be a string (got: ${typeof val})`);
       else if (!val.trim())          errors.push(`"${loc}" must not be empty`);
       else if (!SLUG_RE.test(val))   errors.push(`"${loc}" must be a kebab-case slug (lowercase, digits, hyphens only, e.g. "my-service") got: "${val}"`);
+    } else if (rule._type === 'enum') {
+      if (typeof val !== 'string')        errors.push(`"${loc}" must be a string (got: ${typeof val})`);
+      else if (!rule._values.includes(val)) errors.push(`"${loc}" must be one of: ${rule._values.join(', ')} (got: "${val}")`);
     } else if (rule._type === 'object') {
       if (typeof val !== 'object' || Array.isArray(val)) errors.push(`"${loc}" must be an object`);
       else errors.push(...checkSchema(val, rule, loc));
@@ -200,10 +207,11 @@ function newService(name) {
   fs.mkdirSync(path.join(dir, 'flows'),    { recursive: true });
   fs.mkdirSync(path.join(dir, 'snippets'), { recursive: true });
   fs.writeFileSync(path.join(dir, 'metadata.json'),
-    JSON.stringify({ namespace: name, icon: 'icon.png' }, null, 2) + '\n');
+    JSON.stringify({ title: name, namespace: name, category: CATEGORIES[0], icon: 'icon.png' }, null, 2) + '\n');
 
-  console.log(`${c.green('✓')}  ${name}/ created`);
-  console.log(c.dim('   → Add icon.png (128×128 px)'));
+  console.log(`${c.green('✓')}  blueprints/${name}/ created`);
+  console.log(c.dim(`   → Set "category" to one of: ${CATEGORIES.join(', ')}`));
+  console.log(c.dim('   → Add icon.png (128x128 px)'));
   console.log(c.dim(`   → npm run new:flow ${name} <reference>`));
 }
 
