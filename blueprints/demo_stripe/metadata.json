@@ -1,0 +1,12 @@
+{
+  "title": "Stripe Monitor",
+  "namespace": "demo_stripe",
+  "description": "Inspect customer payments and produce billing snapshots.",
+  "category": "files",
+  "color": "slate",
+  "icon": "icon.png",
+  "author": {
+    "name": "Demo Studio",
+    "homepage": "https://example.com"
+  }
+}

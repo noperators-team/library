@@ -1,0 +1,12 @@
+{
+  "title": "Linear Groomer",
+  "namespace": "demo_linear",
+  "description": "Classify issues and prepare sprint planning notes.",
+  "category": "scraping",
+  "color": "green",
+  "icon": "icon.png",
+  "author": {
+    "name": "Demo Studio",
+    "homepage": "https://noperators.com"
+  }
+}

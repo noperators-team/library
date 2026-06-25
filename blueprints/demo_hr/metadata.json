@@ -1,0 +1,12 @@
+{
+  "title": "HR Onboarding",
+  "namespace": "demo_hr",
+  "description": "Prepare onboarding tasks and employee checklist updates.",
+  "category": "notifications",
+  "color": "pink",
+  "icon": "icon.png",
+  "author": {
+    "name": "Demo Studio",
+    "homepage": "https://noperators.com"
+  }
+}

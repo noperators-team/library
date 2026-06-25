@@ -1,0 +1,12 @@
+{
+  "title": "Notion Publisher",
+  "namespace": "demo_notion",
+  "description": "Create Notion pages from structured automation outputs.",
+  "category": "data",
+  "color": "pink",
+  "icon": "icon.png",
+  "author": {
+    "name": "Demo Studio",
+    "homepage": "https://noperators.com"
+  }
+}

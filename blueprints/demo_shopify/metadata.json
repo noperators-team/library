@@ -1,0 +1,12 @@
+{
+  "title": "Shopify Ops",
+  "namespace": "demo_shopify",
+  "description": "Automate product checks, order lookups, and stock reports.",
+  "category": "notifications",
+  "color": "purple",
+  "icon": "icon.png",
+  "author": {
+    "name": "Noperators Team",
+    "homepage": "https://example.com"
+  }
+}

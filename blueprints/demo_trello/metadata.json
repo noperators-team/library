@@ -1,0 +1,12 @@
+{
+  "title": "Trello Planner",
+  "namespace": "demo_trello",
+  "description": "Create cards and organize project boards automatically.",
+  "category": "data",
+  "color": "amber",
+  "icon": "icon.png",
+  "author": {
+    "name": "Automation Lab",
+    "homepage": "https://noperators.com"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "title": "Intercom Triage",
+  "namespace": "demo_intercom",
+  "description": "Classify conversations and suggest support replies.",
+  "category": "data",
+  "color": "blue",
+  "icon": "icon.png",
+  "author": {
+    "name": "Noperators Team",
+    "homepage": "https://example.com"
+  }
+}

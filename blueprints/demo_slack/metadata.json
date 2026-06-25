@@ -1,0 +1,12 @@
+{
+  "title": "Slack Digest",
+  "namespace": "demo_slack",
+  "description": "Post summaries and alerts into selected Slack channels.",
+  "category": "auth",
+  "color": "orange",
+  "icon": "icon.png",
+  "author": {
+    "name": "Automation Lab",
+    "homepage": "https://example.com"
+  }
+}

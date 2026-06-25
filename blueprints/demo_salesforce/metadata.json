@@ -1,0 +1,12 @@
+{
+  "title": "Salesforce Cleaner",
+  "namespace": "demo_salesforce",
+  "description": "Normalize account fields and prepare update payloads.",
+  "category": "auth",
+  "color": "cyan",
+  "icon": "icon.png",
+  "author": {
+    "name": "Demo Studio",
+    "homepage": "https://noperators.com"
+  }
+}

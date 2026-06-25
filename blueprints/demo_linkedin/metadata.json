@@ -1,0 +1,12 @@
+{
+  "title": "LinkedIn Scout",
+  "namespace": "demo_linkedin",
+  "description": "Collect public profile data and prepare lead summaries.",
+  "category": "files",
+  "color": "cyan",
+  "icon": "icon.png",
+  "author": {
+    "name": "Automation Lab",
+    "homepage": "https://noperators.com"
+  }
+}

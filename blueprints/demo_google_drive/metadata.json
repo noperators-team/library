@@ -1,0 +1,12 @@
+{
+  "title": "Google Drive Filing",
+  "namespace": "demo_google_drive",
+  "description": "Find, organize, and summarize Drive documents.",
+  "category": "notifications",
+  "color": "green",
+  "icon": "icon.png",
+  "author": {
+    "name": "Automation Lab",
+    "homepage": "https://noperators.com"
+  }
+}

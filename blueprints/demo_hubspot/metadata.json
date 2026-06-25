@@ -1,0 +1,12 @@
+{
+  "title": "HubSpot Enrichment",
+  "namespace": "demo_hubspot",
+  "description": "Enrich CRM contacts with public website and company data.",
+  "category": "scraping",
+  "color": "amber",
+  "icon": "icon.png",
+  "author": {
+    "name": "Noperators Team",
+    "homepage": "https://noperators.com"
+  }
+}

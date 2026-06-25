@@ -1,0 +1,12 @@
+{
+  "title": "Real Estate Watch",
+  "namespace": "demo_real_estate",
+  "description": "Monitor listings and extract property highlights.",
+  "category": "notifications",
+  "color": "slate",
+  "icon": "icon.png",
+  "author": {
+    "name": "Automation Lab",
+    "homepage": "https://example.com"
+  }
+}

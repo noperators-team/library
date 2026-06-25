@@ -1,0 +1,12 @@
+{
+  "title": "Web Monitor",
+  "namespace": "demo_web_monitor",
+  "description": "Watch public web pages and detect content changes.",
+  "category": "data",
+  "color": "purple",
+  "icon": "icon.png",
+  "author": {
+    "name": "Demo Studio",
+    "homepage": "https://example.com"
+  }
+}

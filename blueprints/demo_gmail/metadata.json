@@ -1,0 +1,12 @@
+{
+  "title": "Gmail Assistant",
+  "namespace": "demo_gmail",
+  "description": "Read, classify, and draft replies from Gmail threads.",
+  "category": "scraping",
+  "color": "blue",
+  "icon": "icon.png",
+  "author": {
+    "name": "Demo Studio",
+    "homepage": "https://example.com"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "title": "Dropbox Auditor",
+  "namespace": "demo_dropbox",
+  "description": "Scan shared folders and generate file inventory reports.",
+  "category": "notifications",
+  "color": "orange",
+  "icon": "icon.png",
+  "author": {
+    "name": "Demo Studio",
+    "homepage": "https://example.com"
+  }
+}

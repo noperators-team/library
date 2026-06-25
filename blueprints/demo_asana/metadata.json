@@ -1,0 +1,12 @@
+{
+  "title": "Asana Reporter",
+  "namespace": "demo_asana",
+  "description": "Build weekly task summaries from project activity.",
+  "category": "auth",
+  "color": "slate",
+  "icon": "icon.png",
+  "author": {
+    "name": "Noperators Team",
+    "homepage": "https://example.com"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "title": "Legal Intake",
+  "namespace": "demo_legal",
+  "description": "Summarize intake forms and extract key legal entities.",
+  "category": "data",
+  "color": "orange",
+  "icon": "icon.png",
+  "author": {
+    "name": "Automation Lab",
+    "homepage": "https://example.com"
+  }
+}

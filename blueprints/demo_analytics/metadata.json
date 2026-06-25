@@ -1,0 +1,12 @@
+{
+  "title": "Analytics Export",
+  "namespace": "demo_analytics",
+  "description": "Export dashboard figures and create plain language summaries.",
+  "category": "files",
+  "color": "purple",
+  "icon": "icon.png",
+  "author": {
+    "name": "Noperators Team",
+    "homepage": "https://example.com"
+  }
+}

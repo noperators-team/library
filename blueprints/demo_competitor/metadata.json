@@ -1,0 +1,12 @@
+{
+  "title": "Competitor Tracker",
+  "namespace": "demo_competitor",
+  "description": "Capture competitor pages and produce market notes.",
+  "category": "scraping",
+  "color": "orange",
+  "icon": "icon.png",
+  "author": {
+    "name": "Noperators Team",
+    "homepage": "https://example.com"
+  }
+}

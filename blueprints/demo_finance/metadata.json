@@ -1,0 +1,12 @@
+{
+  "title": "Finance Snapshot",
+  "namespace": "demo_finance",
+  "description": "Collect financial tables and normalize report data.",
+  "category": "data",
+  "color": "green",
+  "icon": "icon.png",
+  "author": {
+    "name": "Noperators Team",
+    "homepage": "https://noperators.com"
+  }
+}

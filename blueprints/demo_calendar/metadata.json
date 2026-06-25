@@ -1,0 +1,12 @@
+{
+  "title": "Calendar Scheduler",
+  "namespace": "demo_calendar",
+  "description": "Inspect availability and prepare meeting follow ups.",
+  "category": "notifications",
+  "color": "cyan",
+  "icon": "icon.png",
+  "author": {
+    "name": "Noperators Team",
+    "homepage": "https://noperators.com"
+  }
+}

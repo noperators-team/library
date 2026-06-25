@@ -1,0 +1,12 @@
+{
+  "title": "GitHub Reviewer",
+  "namespace": "demo_github",
+  "description": "Collect pull request metadata and summarize changes.",
+  "category": "files",
+  "color": "blue",
+  "icon": "icon.png",
+  "author": {
+    "name": "Automation Lab",
+    "homepage": "https://example.com"
+  }
+}

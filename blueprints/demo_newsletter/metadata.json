@@ -1,0 +1,12 @@
+{
+  "title": "Newsletter Builder",
+  "namespace": "demo_newsletter",
+  "description": "Gather links and draft newsletter sections.",
+  "category": "auth",
+  "color": "blue",
+  "icon": "icon.png",
+  "author": {
+    "name": "Demo Studio",
+    "homepage": "https://example.com"
+  }
+}

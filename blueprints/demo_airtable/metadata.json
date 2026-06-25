@@ -1,0 +1,12 @@
+{
+  "title": "Airtable Sync",
+  "namespace": "demo_airtable",
+  "description": "Sync records between Airtable bases and browser workflows.",
+  "category": "auth",
+  "color": "green",
+  "icon": "icon.png",
+  "author": {
+    "name": "Noperators Team",
+    "homepage": "https://noperators.com"
+  }
+}

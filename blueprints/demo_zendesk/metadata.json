@@ -1,0 +1,12 @@
+{
+  "title": "Zendesk Helper",
+  "namespace": "demo_zendesk",
+  "description": "Summarize tickets and suggest next support actions.",
+  "category": "scraping",
+  "color": "purple",
+  "icon": "icon.png",
+  "author": {
+    "name": "Automation Lab",
+    "homepage": "https://example.com"
+  }
+}

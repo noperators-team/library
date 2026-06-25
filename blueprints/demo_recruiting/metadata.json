@@ -1,0 +1,12 @@
+{
+  "title": "Recruiting Pipeline",
+  "namespace": "demo_recruiting",
+  "description": "Review candidate pages and build shortlist summaries.",
+  "category": "files",
+  "color": "amber",
+  "icon": "icon.png",
+  "author": {
+    "name": "Demo Studio",
+    "homepage": "https://noperators.com"
+  }
+}

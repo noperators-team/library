@@ -1,0 +1,12 @@
+{
+  "title": "Invoice Extractor",
+  "namespace": "demo_invoice",
+  "description": "Extract invoice fields from web pages and documents.",
+  "category": "auth",
+  "color": "pink",
+  "icon": "icon.png",
+  "author": {
+    "name": "Automation Lab",
+    "homepage": "https://noperators.com"
+  }
+}

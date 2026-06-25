@@ -1,0 +1,12 @@
+{
+  "title": "Figma Exporter",
+  "namespace": "demo_figma",
+  "description": "Collect design metadata and export handoff notes.",
+  "category": "files",
+  "color": "pink",
+  "icon": "icon.png",
+  "author": {
+    "name": "Noperators Team",
+    "homepage": "https://noperators.com"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "title": "Ecommerce QA",
+  "namespace": "demo_ecommerce",
+  "description": "Check product pages, pricing, and checkout availability.",
+  "category": "scraping",
+  "color": "cyan",
+  "icon": "icon.png",
+  "author": {
+    "name": "Automation Lab",
+    "homepage": "https://noperators.com"
+  }
+}
