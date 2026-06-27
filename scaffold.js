@@ -90,6 +90,41 @@ function codeHeader(filePath) {
   return { first, tags };
 }
 
+function readJson(filePath, errors, label = path.basename(filePath)) {
+  try {
+    return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+  } catch {
+    errors.push(`${label}: invalid JSON`);
+    return null;
+  }
+}
+
+function jsonMetadata(value) {
+  const candidates = [value?.metadata, value?.store, value?.library, value];
+  const metadata = candidates.find(candidate => (
+    candidate
+    && typeof candidate === 'object'
+    && !Array.isArray(candidate)
+    && (typeof candidate.title === 'string' || typeof candidate.description === 'string')
+  )) ?? {};
+
+  return {
+    title: typeof metadata.title === 'string' ? metadata.title.trim() : '',
+    description: typeof metadata.description === 'string' ? metadata.description.trim() : '',
+  };
+}
+
+function jsonGraph(value) {
+  const candidates = [value?.graph, value?.nodal_graph, value?.nodalGraph, value];
+  return candidates.find(candidate => (
+    candidate
+    && typeof candidate === 'object'
+    && !Array.isArray(candidate)
+    && Array.isArray(candidate.nodes)
+    && Array.isArray(candidate.edges)
+  )) ?? null;
+}
+
 const PNG_SIG       = [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a];
 const ICON_MIN      = 128;
 const ICON_MAX      = 512;
@@ -111,9 +146,10 @@ function isDir(p) {
   return fs.existsSync(p) && fs.statSync(p).isDirectory();
 }
 
-function jsFiles(dir) {
+function itemFiles(dir, sub) {
+  const extensions = sub === 'flows' ? ['.js', '.json'] : ['.js'];
   return isDir(dir)
-    ? fs.readdirSync(dir).filter(f => f.endsWith('.js'))
+    ? fs.readdirSync(dir).filter(f => extensions.includes(path.extname(f)))
     : [];
 }
 
@@ -128,9 +164,7 @@ function validateService(name) {
   if (!fs.existsSync(metaPath)) {
     errors.push('missing metadata.json');
   } else {
-    let meta;
-    try { meta = JSON.parse(fs.readFileSync(metaPath, 'utf8')); }
-    catch { errors.push('metadata.json: invalid JSON'); }
+    let meta = readJson(metaPath, errors, 'metadata.json');
     if (meta) errors.push(...checkSchema(meta, METADATA_SCHEMA));
   }
 
@@ -152,24 +186,38 @@ function validateService(name) {
     const subDir = path.join(dir, sub);
     if (!isDir(subDir)) continue;
 
-    for (const file of jsFiles(subDir)) {
-      const ref = file.slice(0, -3);
+    for (const file of itemFiles(subDir, sub)) {
+      const ext = path.extname(file);
+      const ref = file.slice(0, -ext.length);
       if (!JS_IDENT.test(ref))
         errors.push(`${sub}/${file}: filename must be a valid JS identifier (no hyphens or spaces, e.g. "myFlow")`);
 
-      const header = codeHeader(path.join(subDir, file));
-      if (!header.first.startsWith('// @title '))
-        errors.push(`${sub}/${file}: first non-empty line must be "// @title <title>"`);
-      if (!header.tags.title || header.tags.title.toUpperCase().startsWith('TODO'))
-        errors.push(`${sub}/${file}: missing non-empty "// @title <title>" header`);
-      if (!header.tags.description || header.tags.description.toUpperCase().startsWith('TODO'))
-        errors.push(`${sub}/${file}: missing non-empty "// @description <description>" header`);
+      if (ext === '.json') {
+        const json = readJson(path.join(subDir, file), errors, `${sub}/${file}`);
+        if (!json) continue;
+
+        const metadata = jsonMetadata(json);
+        if (!metadata.title || metadata.title.toUpperCase().startsWith('TODO'))
+          errors.push(`${sub}/${file}: missing non-empty JSON title in "metadata", "store", "library", or root`);
+        if (!metadata.description || metadata.description.toUpperCase().startsWith('TODO'))
+          errors.push(`${sub}/${file}: missing non-empty JSON description in "metadata", "store", "library", or root`);
+        if (!jsonGraph(json))
+          errors.push(`${sub}/${file}: missing nodal graph object with "nodes" and "edges" arrays`);
+      } else {
+        const header = codeHeader(path.join(subDir, file));
+        if (!header.first.startsWith('// @title '))
+          errors.push(`${sub}/${file}: first non-empty line must be "// @title <title>"`);
+        if (!header.tags.title || header.tags.title.toUpperCase().startsWith('TODO'))
+          errors.push(`${sub}/${file}: missing non-empty "// @title <title>" header`);
+        if (!header.tags.description || header.tags.description.toUpperCase().startsWith('TODO'))
+          errors.push(`${sub}/${file}: missing non-empty "// @description <description>" header`);
+      }
     }
   }
 
-  const hasItems = ITEM_DIRS.some(sub => jsFiles(path.join(dir, sub)).length > 0);
+  const hasItems = ITEM_DIRS.some(sub => itemFiles(path.join(dir, sub), sub).length > 0);
   if (!hasItems)
-    warnings.push('no flows or snippets found. Add at least one .js file in flows/ or snippets/');
+    warnings.push('no flows or snippets found. Add at least one .js/.json flow or .js snippet');
 
   return { errors, warnings };
 }
@@ -190,7 +238,7 @@ function runValidate() {
 
     if (errors.length === 0 && warnings.length === 0) {
       const counts = ITEM_DIRS.map(sub => {
-        const n = jsFiles(path.join(BLUEPRINTS, name, sub)).length;
+        const n = itemFiles(path.join(BLUEPRINTS, name, sub), sub).length;
         return n ? `${n} ${sub.slice(0, -1)}${n > 1 ? 's' : ''}` : null;
       }).filter(Boolean).join(', ');
       console.log(`${c.green('✓')}  ${name}  ${c.dim(`(${counts || 'empty'})`)}`);
@@ -239,24 +287,36 @@ function newItem(type, service, reference) {
   }
   if (!JS_IDENT.test(reference)) { console.error('Reference must be a valid JS identifier (no hyphens or spaces, e.g. "myFlow").'); process.exit(1); }
 
-  const sub  = type === 'flow' ? 'flows' : 'snippets';
+  const sub  = type === 'snippet' ? 'snippets' : 'flows';
   const dir  = path.join(BLUEPRINTS, service, sub);
-  const file = path.join(dir, `${reference}.js`);
+  const ext  = type === 'nodal-flow' ? '.json' : '.js';
+  const file = path.join(dir, `${reference}${ext}`);
 
   if (!isDir(path.join(BLUEPRINTS, service))) {
     console.error(`Service "${service}" not found. Create it first: npm run new:service ${service}`);
     process.exit(1);
   }
   if (!isDir(dir)) fs.mkdirSync(dir, { recursive: true });
-  if (fs.existsSync(file)) { console.error(`"${reference}.js" already exists in ${service}/${sub}/`); process.exit(1); }
+  if (fs.existsSync(file)) { console.error(`"${reference}${ext}" already exists in ${service}/${sub}/`); process.exit(1); }
 
-  const template = type === 'flow'
+  const template = type === 'nodal-flow'
+    ? `${JSON.stringify({
+        metadata: {
+          title: 'TODO: title of this nodal flow',
+          description: 'TODO: describe what this nodal flow does',
+        },
+        nodes: [],
+        edges: [],
+      }, null, 2)}\n`
+    : type === 'flow'
     ? `// @title TODO: title of this flow\n// @description TODO: describe what this flow does\nasync function run($page, $input) {\n  // ...\n  return $generateResponseSuccess('Done', {});\n}\n`
     : `// @title TODO: title of this snippet\n// @description TODO: describe what this snippet does\nreturn {\n  // ...\n};\n`;
 
   fs.writeFileSync(file, template);
-  console.log(`${c.green('✓')}  ${service}/${sub}/${reference}.js created`);
-  console.log(c.dim('   → Replace @title and @description with real store copy'));
+  console.log(`${c.green('✓')}  ${service}/${sub}/${reference}${ext} created`);
+  console.log(c.dim(type === 'nodal-flow'
+    ? '   → Replace metadata.title and metadata.description with real store copy'
+    : '   → Replace @title and @description with real store copy'));
 }
 
 // ─── CLI ─────────────────────────────────────────────────────────────────────
@@ -268,10 +328,11 @@ if (!cmd || cmd === 'validate') {
 } else if (cmd === 'new') {
   const [type, ...args] = rest;
   if (type === 'service')      newService(args[0]);
-  else if (type === 'flow')    newItem('flow',    args[0], args[1]);
-  else if (type === 'snippet') newItem('snippet', args[0], args[1]);
+  else if (type === 'flow')       newItem('flow',       args[0], args[1]);
+  else if (type === 'nodal-flow') newItem('nodal-flow', args[0], args[1]);
+  else if (type === 'snippet')    newItem('snippet',    args[0], args[1]);
   else {
-    console.error('Usage: node scaffold.js new <service|flow|snippet> ...');
+    console.error('Usage: node scaffold.js new <service|flow|nodal-flow|snippet> ...');
     process.exit(1);
   }
 } else {
@@ -279,6 +340,7 @@ if (!cmd || cmd === 'validate') {
   console.error('Usage: node scaffold.js [validate]');
   console.error('       node scaffold.js new service <name>');
   console.error('       node scaffold.js new flow    <service> <reference>');
+console.error('       node scaffold.js new nodal-flow <service> <reference>');
   console.error('       node scaffold.js new snippet <service> <reference>');
   process.exit(1);
 }

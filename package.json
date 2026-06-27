@@ -7,6 +7,7 @@
     "validate": "node scaffold.js validate",
     "new:service": "node scaffold.js new service",
     "new:flow": "node scaffold.js new flow",
+    "new:nodal-flow": "node scaffold.js new nodal-flow",
     "new:snippet": "node scaffold.js new snippet"
   },
   "engines": {
