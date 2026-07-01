@@ -310,7 +310,7 @@ function newItem(type, service, reference) {
       }, null, 2)}\n`
     : type === 'flow'
     ? `// @title TODO: title of this flow\n// @description TODO: describe what this flow does\nasync function run($page, $input) {\n  // ...\n  return $generateResponseSuccess('Done', {});\n}\n`
-    : `// @title TODO: title of this snippet\n// @description TODO: describe what this snippet does\nreturn {\n  // ...\n};\n`;
+    : `// @title TODO: title of this snippet\n// @description TODO: describe what this snippet does\n// @param $input Input payload passed by the caller.\nreturn {\n  input: $input,\n};\n`;
 
   fs.writeFileSync(file, template);
   console.log(`${c.green('✓')}  ${service}/${sub}/${reference}${ext} created`);

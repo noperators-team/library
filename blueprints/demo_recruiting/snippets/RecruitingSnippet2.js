@@ -1,5 +1,6 @@
 // @title Recruiting Pipeline Research And Candidate Shortlist Snippet 2
 // @description Builds a normalized payload for Recruiting Pipeline Research And Candidate Shortlist. Variant 2.
+// @param $input Input payload passed by the caller.
 return {
   namespace: 'demo_recruiting',
   variant: 2,
